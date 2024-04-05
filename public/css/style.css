@@ -1,0 +1,209 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'open sans';
+}
+::selection{
+  background-color: red;
+  color: white;
+}
+.navbar{
+  width: 65%;
+  height: 10vh;
+  background-color: rgb(255, 119, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  left: 17.5%;
+  right: 17.5%;
+  top: 7px;
+  position: fixed;
+  border-radius: 100px;
+}
+.navbar .vendre{
+text-decoration: none;
+color: white;
+font-size: 1vw;
+}
+.btn-login{
+  text-decoration: none;
+  color: black;
+  font-size: 1vw;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border: 1px black;
+  border-style: double;
+}
+.btn-register{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1vw;
+  background-color: rgb(0, 0, 0);
+  padding: 5px 10px 5px 10px;
+  border: 1px black;
+  border-style: double;
+  margin-right: 25px;
+}
+
+.bi-bell{
+height: 3vh;
+width: 3vw;
+}
+.bi-list{
+display: none;
+}
+
+.logo img{
+  padding-left: 25px;
+  width: 12vw;
+}
+
+.input {
+width: 25vw;
+/*max-width: 220px;*/
+height: calc(5vh + 1vw);
+padding: 12px;
+border-radius: 50px;
+border: 1.5px solid lightgrey;
+outline: none;
+transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+box-shadow: 0px 0px 20px -18px;
+}
+
+.input:hover {
+border: 2px solid lightgrey;
+box-shadow: 0px 0px 20px -17px;
+}
+
+.input:active {
+transform: scale(0.95);
+}
+
+.input:focus {
+border: 2px solid #cd4f1c;
+}
+/* rouge: #8a1e1f
+  3eme barre: #cd4f1c
+  2eme: #f88211
+  1er: #f1b74c
+*/
+
+.maildeco{
+  text-decoration: none;
+  color: white;
+  font-style: italic;
+  margin-right: 25px;
+  font-size: 1vw;
+}
+
+.bi-circle{
+  height: 2vh;
+  width: 2vw;
+  transform: translateY(2px);
+}
+
+.hero{
+background-image: url('../image/bckgrd.png');
+width: 100%;
+height: 80vh;
+background-position: left;
+background-repeat: no-repeat;
+background-size: cover;
+margin-top: 13vh;
+display: flex;
+justify-content: right;
+align-items: center;
+}
+
+.popup{
+background-color: white;
+text-align: center;
+height: fit-content;
+padding: 15px 15px 15px 15px;
+margin-right: 10%;
+box-shadow: 11px 9px 29px -8px rgba(0,0,0,0.77);
+}
+
+.popup P{
+margin: 25px 0;
+font-size: 1.1vw;
+}
+.btn-decou{
+text-decoration: none;
+color: rgb(255, 255, 255);
+font-size: 1vw;
+background-color: rgb(0, 0, 0);
+padding: 5px 10px 5px 10px;
+}
+
+@media screen and (max-width: 790px) {
+.hero{
+  background-image: url('../image/bckgrdrespon.png');
+  justify-content: center;
+  align-items: end;
+}
+.popup{
+  width: 80%;
+  margin-bottom: 40px;
+  margin-right: 0;
+}
+.popup P{
+  font-size: 2.5vw;
+}
+.btn-decou{
+  font-size: 2vw;
+}
+.popup h1{
+  font-size: 3.5vw;
+}
+
+.navbar{
+  width: 100%;
+  height: 60px;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+}
+.input,.vendre,.bi-bell,.btn,.maildeco{
+  display: none;
+}
+a .logo{
+  width: 100%;
+}
+a .logo img{
+  padding-left: 35%;
+  width: 150px;
+}
+.bi-list{
+  display: block;
+  width: 30px;
+  height: 30px;
+  color: #8a1e1f;
+  position: absolute;
+  left: 10px;
+}
+
+}
+
+.menu{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #c9b7b7c7;
+  list-style: none;
+  width: 100%;
+  height: 4vh;
+}
+
+.menu a{
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+body{
+  height: 200vh;
+}

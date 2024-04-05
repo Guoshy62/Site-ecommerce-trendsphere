@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}accueil
+{% endblock %}
+
+{% block body %}
+	<section class="hero">
+		<div class="popup">
+			<h1>Must Have</h1>
+			<p>Que vous cherchiez une paire rétro ou la dernière sorties,<br>votre bonheur se trouve ici</p>
+			<a class="btn-decou" href="#" role="button">Découvrir</a>
+		</div>
+	</section>
+	<div class="menu">
+		<li><a href="">Homme</a></li>
+		<li><a href="">Femme</a></li>
+		<li><a href="{{path('app_sneakers')}}">Sneakers</a></li>
+		<li><a href="">Chaussures</a></li>
+		<li><a href="">Tendances</a></li>
+		<li><a href="">vêtements</a></li>
+	</div>
+
+
+
+{% endblock %}
