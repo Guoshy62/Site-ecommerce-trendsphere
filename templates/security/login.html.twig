@@ -8,6 +8,7 @@
 		{% endblock %}
 		<link rel="stylesheet" href="{{asset("css/stylelogin.css")}}">
 		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -32,8 +33,8 @@
 					<h1 class="titre">Se connecter</h1>
 
 					<!--<label for="inputEmail">Email</label>
-															<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus> <br>
-															!-->
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus> <br>
+					!-->
 
 					<input type="email" name="email" class="input" placeholder="EMAIL" value="{{ last_username }}" id="inputEmail" autocomplete="email" required autofocus>
 					<br>

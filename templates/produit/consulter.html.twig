@@ -1,22 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{parent()}}accueil
+	{{parent()}} {{typeProduit.libelle}}
 {% endblock %}
 
 {% block body %}
-	
-	<section class="hero">
-		<div class="popup">
-			<h1>Must Have</h1>
-			<p>Que vous cherchiez une paire rétro ou la dernière sorties,<br>votre bonheur se trouve ici</p>
-			<a class="btn-decou" href="#" role="button">Découvrir</a>
-		</div>
-	</section>
-	
-	
-<section class="container">
-	{% for produit in produits %}
+	<h1 class="titreCate">{{typeProduit.libelle}}</h1>
+
+
+	<section class="container">
+		{% for a in typeProduit.assigners %}
 		
 		<div class="card">
 			<div class="iconfav">
@@ -28,14 +21,13 @@
 				</a>
 			</div>
 			<div>
-				<img class="image" src="produit/{{produit.image}}" alt="">
+				{% set chemin = 'produit/'~ a.produit.image %} 
+				<img class="image" src="{{asset(chemin)}}" alt="">
 			</div>
-			<h1 class="libelle">{{produit.nom}}</h1>
+			<h1 class="libelle">{{a.produit.nom}}</h1>
 			<h2 class="prix">100€</h2>
 		</div>
-
 	{% endfor %}
-</section>
-
+	</section>
 
 {% endblock %}

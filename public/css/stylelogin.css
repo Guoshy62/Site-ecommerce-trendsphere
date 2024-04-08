@@ -95,5 +95,16 @@ body{
     scale: 1;
   }
   
+  .formulaireregi{
+    background-color: white;
+    padding: 40px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
   
   
