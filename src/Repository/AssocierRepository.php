@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Associer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Produit;
+use App\Repository\ProduitRepository;
 
 /**
  * @extends ServiceEntityRepository<Associer>
@@ -20,6 +22,16 @@ class AssocierRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Associer::class);
     }
+
+    public function findByProduit(Produit $produit): array
+    {
+    return $this->createQueryBuilder('a')
+        ->andWhere('a.produit = :produit')
+        ->setParameter('produit', $produit)
+        ->getQuery()
+        ->getResult();
+    }
+
 
     //    /**
     //     * @return Associer[] Returns an array of Associer objects

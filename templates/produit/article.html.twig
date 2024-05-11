@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	{{produit.nom}}
+{% endblock %}
+
+{% block body %}
+
+	<section class="prod">
+
+		<div class="gauche">
+			<div class="aaaa">
+				<h1 class="nomprod">{{produit.nom}}</h1>
+				<div class="imageprod">
+					{% set chemin = 'produit/'~ produit.image %}
+					<img src="{{asset(chemin)}}" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="droite">
+		{% if app.user %}
+			{% if produit not in app.user.favoris %}
+				<a href="{{path('app_favoris_produit',{'id':produit.id})}}">
+					<div class="iconfavo">
+						<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" fill="currentColor" class="bi-heart" viewbox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+							<path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+						</svg>
+					</div>
+				</a>
+			{% elseif produit in app.user.favoris %}
+				<a href="{{path('app_suppfav',{'id':produit.id})}}">
+					<div class="iconfavo">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi-heart" viewbox="0 0 16 16">
+							<path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+						</svg>
+					</div>
+				</a>
+			{% endif %}
+			{% else %}
+				<div class="iconfavo">
+				<a href="{{path('app_login')}}">
+						<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" fill="currentColor" class="bi-heart" viewbox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+							<path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+						</svg>
+					</div>
+				</a>
+			{% endif %}
+			<div class="bbbb">
+				<div class="tableau">
+						{% for a in associers %}
+							<button class="taille">{{a.taille.libelle}}</button>
+						{% endfor %}
+				</div>
+
+				<a href="#">
+					<button class="ajoupanier">AJOUTER AU PANIER</button>
+				</a>
+			</div>
+			<div class="description">
+				<h4>Description du produit</h4>
+				<p>{{produit.description}}</p>
+				<br>
+				<p>stock: test</p>
+				{#{% for a in associers %}
+				<p>stock: {{a.produit.stock}}</p>
+				{% endfor %}#}
+			</div>
+		</div>
+	</section>
+{% endblock %}

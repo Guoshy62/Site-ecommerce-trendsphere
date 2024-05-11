@@ -31,9 +31,13 @@ class Produit
     #[ORM\OneToOne(mappedBy: 'produit', cascade: ['persist', 'remove'])]
     private ?Assigner $assigner = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoris')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->associers = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,6 +124,33 @@ class Produit
         }
 
         $this->assigner = $assigner;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeFavori($this);
+        }
 
         return $this;
     }
