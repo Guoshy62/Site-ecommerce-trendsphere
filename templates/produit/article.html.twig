@@ -71,23 +71,19 @@
 				<p>{{produit.description}}</p>
 
 			<script>
-    			// Sélection de tous les boutons de taille
     			var buttons = document.querySelectorAll('.taille');
 
-    			// Boucle sur chaque bouton pour ajouter un écouteur d'événement de clic
-    			buttons.forEach(function(button) {
-       			 button.addEventListener('click', function() {
-           		 // Supprimer la classe 'selected' de tous les boutons
+				buttons.forEach(function(button) {
+       			button.addEventListener('click', function() {
             	buttons.forEach(function(btn) {
                 btn.classList.remove('selected');
             	});
 
-            	// Ajouter la classe 'selected' au bouton actuellement cliqué
+            	
             	this.classList.add('selected');
 
             	var price = this.getAttribute('data-price');
 
-            	// Mettre à jour l'affichage du prix
            		document.getElementById('prix').innerText = 'PRIX: ' + price +'€';
         			});
     			});

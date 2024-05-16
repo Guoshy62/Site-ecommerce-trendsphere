@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste des contact{% endblock %}
+
+{% block body %}
+<h4 class="alala">Liste des message</h4>
+
+<div class="tablerespon">
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Email</th>
+                <th scope="col">Sujet</th>
+                <th scope="col">Message</th>
+				<th scope="col">Date d'envoi</th>
+			</tr>
+		</thead>
+		<tbody>
+        {% for contact in contacts %}
+				<tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+                    <td>{{ contact.email }}</td>
+					<td>{{ contact.sujet }}</td>
+                    <td>{{ contact.message }}</td>
+					<td>{{ contact.Datedeenvoi | date("d-m-Y à H:i:s") }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}

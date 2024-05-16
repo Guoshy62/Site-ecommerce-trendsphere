@@ -16,9 +16,6 @@ class Associer
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[ORM\Column]
-    private ?int $stock = null;
-
     #[ORM\ManyToOne(inversedBy: 'associers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Produit $produit = null;

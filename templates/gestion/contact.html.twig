@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Nous contacter{% endblock %}
+
+{% block body %}
+<h1 class="titreCate">Nous contacter</h1>
+
+<div class="contact">
+{{form(form)}}
+</div>
+{% endblock %}
