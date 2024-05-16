@@ -50,7 +50,8 @@
 				</div>
 				<h1 class="libelle">{{produit.nom}}</h1>
 				
-				<h2 class="prix">100€</h2>
+				{% set prix = prixProduits[produit.id] ?? 'Prix non disponible' %}
+				<h2 class="prix">{{prix}}€</h2>
 				
 			</div>
 			

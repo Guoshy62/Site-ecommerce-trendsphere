@@ -31,6 +31,16 @@ class AssocierRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
     }
+    public function findByProduitAndTaille($produitId, $taille)
+    {
+    return $this->createQueryBuilder('a')
+        ->andWhere('a.produit = :produitId')
+        ->andWhere('a.taille = :taille')
+        ->setParameter('produitId', $produitId)
+        ->setParameter('taille', $taille)
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
 
 
     //    /**

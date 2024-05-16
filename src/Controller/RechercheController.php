@@ -5,18 +5,17 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Entity\Produit;
-use App\Entity\Associer;
 use App\Repository\ProduitRepository;
+use Symfony\Component\HttpFoundation\Request;
 use App\Repository\AssocierRepository;
 
-class BaseController extends AbstractController
+class RechercheController extends AbstractController
 {
-    #[Route('/', name: 'app_accueil')]
-    public function index(ProduitRepository $ProduitRepository,AssocierRepository $associerRepository): Response
+    #[Route('/search', name: 'app_search')]
+    public function search(Request $request, ProduitRepository $produitRepository,AssocierRepository $associerRepository): Response
     {
-        $produits = $ProduitRepository->findAll();
-        shuffle($produits);
+        $query = $request->query->get('q');
+        $produits = $produitRepository->findBySearchQuery($query);
 
         $prixProduits = [];
         foreach ($produits as $produit) {
@@ -26,12 +25,10 @@ class BaseController extends AbstractController
         }
         $prixProduits[$produit->getId()] = $associer ? $associer->getPrix() : 'Prix non disponible';
         }
-        
-        return $this->render('base/index.html.twig', [
-            'controller_name' => 'BaseController',
-            'produits'=>$produits,
+        return $this->render('recherche/results.html.twig', [
+            'produits' => $produits,
+            'query' => $query,
             'prixProduits' => $prixProduits,
-            
         ]);
     }
 }

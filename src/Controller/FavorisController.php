@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Produit;
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\AssocierRepository;
 
 class FavorisController extends AbstractController
 {
@@ -39,11 +40,22 @@ class FavorisController extends AbstractController
     }
 
     #[Route('/private-listeFav', name: 'app_listefav')]
-    public function listefav(): Response
+    public function listefav(ProduitRepository $ProduitRepository,AssocierRepository $associerRepository): Response
     {
-     
+        $produits = $ProduitRepository->findAll();
+        shuffle($produits);
+
+        $prixProduits = [];
+        foreach ($produits as $produit) {
+        $associer = $associerRepository->findByProduitAndTaille($produit->getId(), 8); 
+        if (!$associer) {
+            $associer = $associerRepository->findByProduitAndTaille($produit->getId(), 15);
+        }
+        $prixProduits[$produit->getId()] = $associer ? $associer->getPrix() : 'Prix non disponible';
+        }
         return $this->render('favoris/favoris.html.twig', [
-            
+            'produits'=>$produits,
+            'prixProduits' => $prixProduits,
         ]);
 
     }

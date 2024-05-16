@@ -51,7 +51,8 @@
 			</div>
 			<h1 class="libelle">{{a.produit.nom}}</h1>
 			
-			<h2 class="prix">{#{{associer.produit.prix}}#}100€</h2>
+			{% set prix = prixProduits[a.produit.id] ?? 'Prix non disponible' %}
+				<h2 class="prix">{{prix}}€</h2>
 			</div>
 	{% endfor %}
 	</section>

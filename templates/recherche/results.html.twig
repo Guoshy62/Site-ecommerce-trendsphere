@@ -1,23 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	{{parent()}}accueil
-{% endblock %}
+{% block title %}{{parent()}} résultat de {{query}}{% endblock %}
 
 {% block body %}
 
-	<section class="hero">
-		<div class="popup">
-			<h1>Must Have</h1>
-			<p>Que vous cherchiez une paire rétro ou la dernière sorties,<br>votre bonheur se trouve ici</p>
-			<a class="btn-decou" href="#les_choses_à_découvrir" role="button">Découvrir</a>
-		</div>
-	</section>
+<h1 class="titreCate">Résultat pour {{query}}</h1>
+<section class="container">
+{% if produits %}
 
-
-	<section class="container" id="les_choses_à_découvrir">
-		{% for produit in produits %}
-			<div class="card">
+{% for produit in produits %}
+    <div class="card">
 				{% if app.user %}
 					{% if produit not in app.user.favoris %}
 						<a href="{{path('app_favoris_produit',{'id':produit.id})}}">
@@ -55,19 +47,17 @@
 				</div>
 				<h1 class="libelle">{{produit.nom}}</h1>
 
-				{#
-				{% if produits.associer.prix is not null %}
-					<h2 class="prix">{{produit.associer.prix}}</h2>
-				{% else %}
-					<p>Prix non disponible</p>
-				{% endif %}
-				#}
+				
 				{% set prix = prixProduits[produit.id] ?? 'Prix non disponible' %}
 				<h2 class="prix">{{prix}}€</h2>
 			</div>
+  
+{% endfor %}
+{% else %}
+	<h1 class="padefav">Aucun résultat trouvé pour cette recherche</h1>
+{% endif %}
+</section>
 
-		{% endfor %}
-	</section>
 
 
 {% endblock %}

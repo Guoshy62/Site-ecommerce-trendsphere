@@ -44,18 +44,6 @@ class Associer
         return $this;
     }
 
-    public function getStock(): ?int
-    {
-        return $this->stock;
-    }
-
-    public function setStock(int $stock): static
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
     public function getProduit(): ?Produit
     {
         return $this->produit;
