@@ -46,16 +46,6 @@
 			</div>
 			</form>
 
-
-
-
-			{#
-			<form action="{{path('app_search')}}" method="get">
-				<input type="search" name="q" placeholder="Recherchez par marque, couleur, etc." maxlength="25" class="input" required>
-				<button type="submit">rechercher</button>
-			</form>
-			#}
-
 			{% if is_granted('ROLE_ADMIN') %}
 			<div class="dropdown">
   				<button class="menuDer">MENU ADMIN</button>

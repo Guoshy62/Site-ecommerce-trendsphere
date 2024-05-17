@@ -55,13 +55,6 @@
 				</div>
 				<h1 class="libelle">{{produit.nom}}</h1>
 
-				{#
-				{% if produits.associer.prix is not null %}
-					<h2 class="prix">{{produit.associer.prix}}</h2>
-				{% else %}
-					<p>Prix non disponible</p>
-				{% endif %}
-				#}
 				{% set prix = prixProduits[produit.id] ?? 'Prix non disponible' %}
 				<h2 class="prix">{{prix}}€</h2>
 			</div>
